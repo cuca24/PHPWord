@@ -19,6 +19,7 @@ namespace PhpOffice\PhpWord\Element;
 
 use BadMethodCallException;
 use ReflectionClass;
+use App\PhpWord\ElementOptions;
 
 /**
  * Container abstract class.
@@ -153,6 +154,16 @@ abstract class AbstractContainer extends AbstractElement
         $element->setParentContainer($this);
         $element->setElementIndex($this->countElements() + 1);
         $element->setElementId();
+
+        foreach ($args as $arg) {
+
+            if ($arg && $arg instanceof ElementOptions) {
+                $elementIndex = $arg->getIndex();
+                array_splice($this->elements, $elementIndex, 0, [$element]);
+
+                return $element;
+            }
+        }
 
         $this->elements[] = $element;
 
