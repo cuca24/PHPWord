@@ -19,7 +19,7 @@ namespace PhpOffice\PhpWord\Element;
 
 use BadMethodCallException;
 use ReflectionClass;
-use App\PhpWord\ElementOptions;
+use PhpOffice\PhpWord\Element;
 
 /**
  * Container abstract class.
